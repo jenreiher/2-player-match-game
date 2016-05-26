@@ -1,6 +1,6 @@
 # http://www.gnu.org/software/automake
 
-ds.store
+.DS_Store
 
 # http://www.gnu.org/software/autoconf
 
