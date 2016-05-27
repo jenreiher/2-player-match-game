@@ -10,6 +10,23 @@
 	}
 ]
 
+# in progress
+def game_play 
+	
+	
+	loop do
+		current_player = @players[0]
+		puts "#{current_player}"
+		make_question(current_player)
+		prompt_for_answer
+		verify_answer(current_player)
+		@players.rotate!
+		break if current_player[:score] ==0
+	end
+	
+
+end 
+
 #works
 def make_question(current_player)
 	rand_num = Random.new
@@ -26,15 +43,12 @@ end
 
 #works
 def verify_answer(current_player)
-	puts "player answer is #{@player_answer}"
-	puts "the answer should be #{@correct_answer}"
-	puts "verifying score"
+
 	if @player_answer == @correct_answer
 			puts "correct! :)"
 		else
 			puts "wrong answer"
-			#does not work
-			current_player[:score]-1
+			current_player[:score] = current_player[:score]-1
 			print_score
 	end
 end
@@ -46,18 +60,11 @@ def print_score
 	#{@players[1][:name]} => #{@players[1][:score]}"
 end
 
-# not called yet
-def change_player
-	@players.rotate!
-end
-
-# in progress
-def game_play 
-	current_player = @players[0]
-
-	make_question(current_player)
-	prompt_for_answer
-	verify_answer(current_player)
-end 
+# not working
+#def players_rotate
+	#grab_player = @players.pop
+	#@players << grab_player.push
+	#puts "#{@players}"
+#end
 
 game_play
