@@ -1,19 +1,17 @@
+require_relative 'players'
+require 'colorize'
 
-@players = [
-	{
-		name: 'Player 1',
-		score: 3
-	}, 
-	{
-		name: 'Player 2',
-		score: 3
-	}
-]
+class Game
+	
+	def start_game
+		player1 = Player.new(:'Player1')
+		player2 = Player.new(:'Player2')
+		@players << player1, player2
+	end
 
-# in progress
+end
+
 def game_play 
-	
-	
 	loop do
 		current_player = @players[0]
 		puts "#{current_player}"
@@ -21,10 +19,8 @@ def game_play
 		prompt_for_answer
 		verify_answer(current_player)
 		@players.rotate!
-		break if current_player[:score] ==0
+		break if current_player[:lives] == 0
 	end
-	
-
 end 
 
 #works
@@ -45,7 +41,6 @@ end
 def verify_answer(current_player)
 
 	if @player_answer == @correct_answer
-			current_playser[:score} += 1
 			puts "correct! :)"
 		else
 			puts "wrong answer"
@@ -61,4 +56,7 @@ def print_score
 	#{@players[1][:name]} => #{@players[1][:score]}"
 end
 
-game_play
+#game_play
+
+game_on = Game.new
+game_on.open
